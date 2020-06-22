@@ -1,0 +1,54 @@
+<div class="m-5">
+  <div class="clearfix">
+    <h5 class="color-primary">Users</h5>
+  </div>
+  <!-- FILTERS -->
+  <input type="search" class="form-control col-lg-3 my-3" placeholder="Search by email" [(ngModel)]="searchTerm" (keyup.enter)="onGetUsers(1)">
+  <!-- USERS LIST -->
+  <div class="table-responsive">
+    <table class="table table-striped small text-center">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody class="cursor-pointer">
+        <tr *ngFor="let user of users; index as i">
+          <td>{{ i+1 }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.status }}</td>
+          <td>
+            <a class="btn py-0" (click)="onGetUserFile(user.id,'pdf')" ><i class="fa fa-file-pdf-o"></i></a>
+            <a class="btn py-0" (click)="onGetUserFile(user.id,'csv')" ><i class="fa fa-file-text-o"></i></a>
+          </td>
+        </tr>
+        <tr *ngIf="users.length == 0 ">
+          <td colspan="15"><h6>No Records Found</h6></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- PAGINATION -->
+  <div class="clearfix px-4 text-center text-md-left" *ngIf="pg?.total_records !== 0 ">
+    <div class="btn-toolbar float-md-right justify-content-center">
+      <div class="btn-group">
+        <a class="btn outline-primary" [ngClass]="{'disabled': pg?.current_page == 1}" tabindex="0" (click)="onUpdatePage(1)"><i class="fa fa-angle-double-left"></i></a>
+        <a class="btn outline-primary" [ngClass]="{'disabled': pg?.current_page == 1}" tabindex="0" (click)="onUpdatePage(pg?.current_page-1)"><i class="fa fa-angle-left"></i></a>
+        <span class="outline-primary btn" (click)="onUpdatePage(pg?.current_page-1)" *ngIf="pg?.current_page > 1">{{ pg?.current_page-1}}</span>
+        <span class="btn fill-primary">{{ pg?.current_page}}</span>
+        <span class="outline-primary btn" (click)="onUpdatePage(pg?.current_page+1)" *ngIf="pg?.current_page < pg?.total_pages">{{ pg?.current_page+1}}</span>
+        <a class="btn outline-primary" [ngClass]="{'disabled': pg?.current_page == pg?.total_pages}" (click)="onUpdatePage(pg?.current_page+1)" tabindex="0"><i class="fa fa-angle-right"></i></a>
+        <a class="btn outline-primary" [ngClass]="{'disabled': pg?.current_page == pg?.total_pages}"  (click)="onUpdatePage(pg?.total_pages)" tabindex="0"><i class="fa fa-angle-double-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>  

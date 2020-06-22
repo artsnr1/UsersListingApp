@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+$primary-color: #008081;
+$secondary-color: #343a40;
+
+a {
+    cursor: pointer;
+}
+
+.color-primary {
+    color: $primary-color;
+}
+
+.color-secondary {
+    color: $secondary-color
+}
+
+.outline-primary {
+    border-color: $primary-color !important;
+}
+
+.fill-primary {
+    background-color: $primary-color !important;
+    color: white !important;
+}
+
+input.form-control, textarea.form-control {
+    border: none;
+    border-bottom: 1px solid $primary-color;
+    border-radius: 0;
+  }
+  
+input.form-control:focus, textarea.form-control:focus {
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid $primary-color;
+}
+span.input-group-text {
+    background-color: unset;
+    border: none;
+    border-bottom: 1px solid $primary-color;
+    border-radius: 0;
+}
+
+button.btn {
+    color: $primary-color;
+    border-color: $primary-color;
+}
+
+button.btn:hover {
+    color: white;
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+a[routerlink] {
+    color: $primary-color;
+}
+
+// a.outline-primary:focus {
+//     box-shadow: 0 0 0 0.2rem $primary-color;
+// }
+
+thead tr {
+    color: $secondary-color
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}

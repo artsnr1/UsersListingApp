@@ -1,0 +1,72 @@
+<div class="row justify-content-center m-5">
+    <form (ngSubmit)="onSignUp(signUpForm)" #signUpForm=ngForm class="col-lg-5 col-md-8">
+      <div class="input-group pt-2">
+        <input type="text" name="first_name" class="form-control" placeholder="First name" ngModel required #firstNameRef="ngModel">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <small class="text-danger pl-2" *ngIf="errorMsgs?.first_name || (firstNameRef.invalid && (firstNameRef.touched || signUpForm.submitted))">
+        {{ errorMsgs?.first_name? errorMsgs.first_name : 'First name is required' }}
+      </small>
+  
+      <div class="input-group pt-2">
+        <input type="text" name="last_name" class="form-control" placeholder="Last name" ngModel required #lastNameRef="ngModel">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <small class="text-danger pl-2" *ngIf="errorMsgs?.last_name || (lastNameRef.invalid && (lastNameRef.touched || signUpForm.submitted))">
+        {{ errorMsgs?.last_name? errorMsgs.last_name : 'Last name is required' }}
+      </small>
+  
+      <div class="input-group pt-2">
+        <input type="text" name="email" class="form-control" placeholder="Email"
+         ngModel required email #emailRef="ngModel">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-envelope-square" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <small class="text-danger pl-2" *ngIf="errorMsgs?.email || (emailRef.invalid && (emailRef.touched || signUpForm.submitted))">
+        {{ errorMsgs?.email? errorMsgs.email : 'Please enter a valid email' }}
+      </small>
+  
+      <div class="input-group pt-2">
+        <input type="password" name="password" class="form-control" placeholder="**********" ngModel required minlength="6" #passwordRef="ngModel">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <small class="text-danger pl-2" *ngIf="errorMsgs?.password || (passwordRef.errors && (passwordRef.touched || signUpForm.submitted))">
+        {{ errorMsgs?.password? errorMsgs.password : 'Password must be atleast 6 characters long' }}
+      </small>
+  
+      <div class="input-group pt-2">
+        <textarea type="text" name="address" class="form-control" placeholder="Address" ngModel></textarea>
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+        </div>
+      </div>
+  
+      <div class="row pt-3">
+        <div class="col-sm-6">
+          <button class="btn btn-outline-primary btn-lg btn-block" type="submit">Sign Up</button>
+        </div>
+        <div class="col-sm-6">
+          <div class="padding-top-10 text-right"><a routerLink="/signin">Sign In</a></div>
+        </div>
+      </div>
+  
+      <div *ngIf="signUpSucceeded" class="pt-4">
+        <h6 class="color-primary">Registration Successful! </h6>
+        <small>Please check your email address to sign in. If you do not receive the email within a few minutes, please check your spam folder.
+          If you have already verified your email please
+          <a routerLink="/signin">Sign in</a> 
+          here
+        </small>
+      </div>
+    </form>
+  </div>
+  
+  
+    
